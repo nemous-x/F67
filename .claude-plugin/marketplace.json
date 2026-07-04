@@ -1,5 +1,5 @@
 {
-  "name": "f6ix7",
+  "name": "f67",
   "description": "F67 — AI Development Operating System for Claude Code",
   "owner": {
     "name": "Nemous",
@@ -7,10 +7,10 @@
   },
   "plugins": [
     {
-      "name": "f6ix7",
+      "name": "f67",
       "source": "./",
       "description": "AI Development Operating System: Domain Driven Memory, 12 specialized pipeline agents, 13 /f67-* lifecycle commands, and reusable workflow artifacts.",
-      "version": "0.2.1",
+      "version": "0.3.0",
       "author": {
         "name": "Nemous"
       },
@@ -19,5 +19,8 @@
       "keywords": ["ai-development", "domain-driven-memory", "orchestration", "workflow", "agents"],
       "tags": ["memory", "sdlc", "orchestrator", "ddd"]
     }
-  ]
+  ],
+  "renames": {
+    "f6ix7": "f67"
+  }
 }
