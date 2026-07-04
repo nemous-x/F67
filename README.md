@@ -11,10 +11,10 @@ Understanding always comes first. The AI never starts by writing code.
 
 ## Install
 
-In Claude Code, add the marketplace and install the plugin (replace `zinokhedri/F6IX7` with this repo's `owner/name` if you forked it):
+In Claude Code, add the marketplace and install the plugin:
 
 ```
-/plugin marketplace add zinokhedri/F6IX7
+/plugin marketplace add nemous-x/F6IX7
 /plugin install f6ix7@f6ix7
 ```
 
