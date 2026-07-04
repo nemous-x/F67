@@ -1,0 +1,20 @@
+{
+  "name": "f6ix7",
+  "version": "0.1.0",
+  "description": "F67 — AI Development Operating System for Claude Code. Orchestrates the full software development lifecycle with Domain Driven Memory, specialized agents, workflow artifacts, and deterministic phase-based workflows.",
+  "author": {
+    "name": "Zino Khedri",
+    "email": "contact.khedri@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/zinokhedri/F6IX7",
+  "repository": "https://github.com/zinokhedri/F6IX7",
+  "keywords": [
+    "ai-development",
+    "domain-driven-memory",
+    "orchestration",
+    "workflow",
+    "agents",
+    "claude-code"
+  ]
+}

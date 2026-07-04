@@ -1,0 +1,23 @@
+{
+  "name": "f6ix7",
+  "description": "F67 — AI Development Operating System for Claude Code",
+  "owner": {
+    "name": "Zino Khedri",
+    "email": "contact.khedri@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "f6ix7",
+      "source": "./",
+      "description": "AI Development Operating System: Domain Driven Memory, 12 specialized pipeline agents, 13 /f67-* lifecycle commands, and reusable workflow artifacts.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Zino Khedri"
+      },
+      "license": "MIT",
+      "category": "development",
+      "keywords": ["ai-development", "domain-driven-memory", "orchestration", "workflow", "agents"],
+      "tags": ["memory", "sdlc", "orchestrator", "ddd"]
+    }
+  ]
+}

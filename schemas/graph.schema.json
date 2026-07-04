@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "f67/graph.schema.json",
+  "title": "F67 relationship graph",
+  "type": "object",
+  "required": ["version", "updated", "nodes", "edges"],
+  "properties": {
+    "version": { "const": 1 },
+    "updated": { "type": "string", "format": "date-time" },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^(domain|feature|service|repository|component|api|test|database|event|file):.+$" },
+          "type": { "enum": ["domain", "feature", "service", "repository", "component", "api", "test", "database", "event", "file"] },
+          "label": { "type": "string" },
+          "path": { "type": "string" }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "type"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "type": { "enum": ["contains", "implements", "uses", "persists-to", "calls", "tested-by", "emits", "listens-to", "related-to"] }
+        }
+      }
+    }
+  }
+}
