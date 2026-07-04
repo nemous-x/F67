@@ -3,14 +3,14 @@
   "description": "F67 — AI Development Operating System for Claude Code",
   "owner": {
     "name": "Nemous",
-    "email": "contact.khedri@gmail.com"
+    "email": "reach.zineddine@gmail.com"
   },
   "plugins": [
     {
       "name": "f6ix7",
       "source": "./",
       "description": "AI Development Operating System: Domain Driven Memory, 12 specialized pipeline agents, 13 /f67-* lifecycle commands, and reusable workflow artifacts.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Nemous"
       },

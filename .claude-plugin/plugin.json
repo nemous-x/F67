@@ -1,10 +1,10 @@
 {
   "name": "f6ix7",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "F67 — AI Development Operating System for Claude Code. Orchestrates the full software development lifecycle with Domain Driven Memory, specialized agents, workflow artifacts, and deterministic phase-based workflows.",
   "author": {
     "name": "Nemous",
-    "email": "contact.khedri@gmail.com"
+    "email": "reach.zineddine@gmail.com"
   },
   "license": "MIT",
   "homepage": "https://github.com/nemous-x/F6IX7",

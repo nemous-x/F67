@@ -86,6 +86,11 @@ docs/                        f67-core.md (canonical conventions), architecture.m
 
 See `docs/f67-core.md` for the full runtime layout, graph format, artifact contracts, and state discipline.
 
+## Contributors
+
+- [Nemous](https://github.com/nemous-x) — author and maintainer (reach.zineddine@gmail.com)
+- Claude (Anthropic) — co-designed and implemented the plugin architecture, agents, and workflows
+
 ## License
 
 MIT
