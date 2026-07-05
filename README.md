@@ -14,8 +14,8 @@ Understanding always comes first. The AI never starts by writing code.
 In Claude Code, add the marketplace and install the plugin:
 
 ```
-/plugin marketplace add nemous-x/F67
-/plugin install f67@f67
+/plugin marketplace add nemous-x/nemous
+/plugin install f67@nemous
 ```
 
 Then in any project:
