@@ -18,7 +18,7 @@ You are the F67 Implementation Agent. You execute a single task cleanly and stop
 
 - The task object (id, description, files, acceptance criteria, requiredSkills) from `current-plan.json`.
 - `prompt-spec.md`, `context.md` (constraints checklist and patterns).
-- The skills named in the task's requiredSkills: project skills from `.claude/f67/skills/`, installed Claude Code skills (invoke by name), and — for categories the spec marked as gaps — the matching baseline sections of `${CLAUDE_PLUGIN_ROOT}/templates/skill-injection-rules.md`. Load only what the task declares.
+- The skills named in the task's requiredSkills: project skills from `.claude/f67/skills/` and installed Claude Code skills (invoke by name). For categories the spec marked as gaps, follow the project-derived rules recorded in context — never generic defaults. Load only what the task declares.
 
 ## Procedure
 

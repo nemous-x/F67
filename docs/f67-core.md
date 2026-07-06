@@ -120,10 +120,10 @@ State files hold references only — paths, ids, task numbers, status enums. Nev
 ```yaml
 version: 1
 project:
-  stack: []            # filled by /f67-init, e.g. [nextjs, nestjs, prisma]
-  architecture: ""     # e.g. modular-monolith, hexagonal
-  testFramework: ""    # e.g. vitest, jest, pytest
-  uiFramework: ""      # e.g. react + tailwind + shadcn
+  stack: []            # detected by /f67-init from the repository
+  architecture: ""     # detected architecture style
+  testFramework: ""    # detected test framework
+  uiFramework: ""      # detected UI framework / styling approach
 memory:
   autoEvolve: true     # run memory evolution after workflows
   protectCurated: true
@@ -157,7 +157,7 @@ The domain detector tags each request with technical areas; the context builder 
 | infrastructure | deployment, CI/CD, containers, observability |
 | testing | the project's test framework, testing strategy |
 
-When no skill matches a category, fall back to the general per-category engineering baselines in `skill-injection-rules.md` and record the gap in the spec plus a skill request for the user.
+When no skill matches a category, the rules are derived from the project itself (configs, discovered patterns, memory, guidance files) per `skill-injection-rules.md`, and the gap becomes a skill request to the user. F67 never substitutes generic, non-project knowledge for a missing skill.
 
 ### Business-specific skills
 

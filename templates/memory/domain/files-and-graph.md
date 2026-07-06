@@ -6,7 +6,7 @@
 {
   "updated": "{{date}}",
   "files": [
-    { "path": "src/billing/refund.service.ts", "role": "service", "note": "" }
+    { "path": "<path from this repository>", "role": "service | controller | component | test | ...", "note": "" }
   ]
 }
 ```
@@ -16,6 +16,6 @@
 Remaining markdown files (`architecture.md`, `dependencies.md`, `api.md`, `database.md`, `ui.md`, `tests.md`, `history.md`, `patterns.md`, `known-issues.md`, `decisions.md`) follow the same shape as overview.md: curated marker on line 1, factual bullet sections, `## Learned` heading at the end. History entries are dated, newest first:
 
 ```markdown
-## 2026-07-04 — Partial refunds (artifact 001)
-- Added partial refund path to RefundService; new `amount` column on refunds.
+## {{date}} — {{feature title}} (artifact {{NNN}})
+- What changed in this domain, in the project's own terms.
 ```

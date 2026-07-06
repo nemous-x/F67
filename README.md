@@ -79,7 +79,7 @@ Curated knowledge is protected: files marked `<!-- f67:curated -->` are only eve
 .claude-plugin/plugin.json   Manifest
 agents/                      12 pipeline agents
 skills/                      13 /f67-* command skills
-templates/                   Memory, artifact, state, and stack-skill templates
+templates/                   Memory, artifact, and state templates + skill-injection rules
 schemas/                     graph.schema.json
 docs/                        f67-core.md (canonical conventions), architecture.md
 ```

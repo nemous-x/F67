@@ -46,7 +46,7 @@ Quoted verbatim from domain memory, with source file.
 
 ## Required skills
 
-Per technical area: resolved skill (project / installed, by name) or `gap → baseline + skill request` per skill-injection-rules.md.
+Per technical area: resolved skill (project / installed, by name) or `gap → project-derived rules + skill request` per skill-injection-rules.md.
 
 ## Testing strategy
 
