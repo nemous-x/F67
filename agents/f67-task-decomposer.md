@@ -3,7 +3,7 @@ name: f67-task-decomposer
 description: >
   F67 pipeline stage 7. Breaks an implementation plan into small, independent, testable
   tasks with explicit acceptance criteria, affected files, dependencies, and required
-  skills. Runs immediately after f67-planner within /f67-plan.
+  skills. Runs immediately after f67-planner within /f67:plan.
 
   <example>
   Context: implementation-plan.md was just written by f67-planner.

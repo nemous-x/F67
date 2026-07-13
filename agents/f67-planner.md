@@ -3,7 +3,7 @@ name: f67-planner
 description: >
   F67 pipeline stage 6. Produces the implementation plan from a prompt-spec: strategy
   selection (TDD, API-first, bugfix, migration, refactor, performance, UI), milestones,
-  risks, rollback, and testing/review strategy. Use for /f67-plan.
+  risks, rollback, and testing/review strategy. Use for /f67:plan.
 
   <example>
   Context: prompt-spec.md exists for partial refunds.

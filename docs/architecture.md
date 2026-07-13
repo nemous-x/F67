@@ -2,7 +2,7 @@
 
 ## Roles
 
-The main Claude Code session is the orchestrator. It receives `/f67-*` commands, maintains lightweight state under `.claude/f67/state/`, dispatches agents, merges their summaries, and reports to the user. It never implements, reviews, or loads large contexts — agents return digests and artifact paths, not raw content.
+The main Claude Code session is the orchestrator. It receives `/f67:*` commands, maintains lightweight state under `.claude/f67/state/`, dispatches agents, merges their summaries, and reports to the user. It never implements, reviews, or loads large contexts — agents return digests and artifact paths, not raw content.
 
 ## The twelve agents
 
@@ -27,15 +27,15 @@ Single responsibility is enforced by each agent's rules section: implementer exe
 
 ## Command → agent mapping
 
-- `/f67-init` → parallel discovery (×N, scoped) + memory-evolver, with user confirmation of domain boundaries.
-- `/f67-prompt` → in-session classification → [memory-loader ∥ discovery] → (context-builder for large) → prompt-builder.
-- `/f67-plan` → planner → task-decomposer.
-- `/f67-execute` → executor (fast path, one dispatch, self-scoped).
-- `/f67-implement` → implementer (one task; parallel implementers for independent tasks).
-- `/f67-test` → tester. `/f67-review` → reviewer. `/f67-improve` → improver.
-- `/f67-discover`, `/f67-explain`, `/f67-brainstorm`, `/f67-memory` → in-session classification + read-only combinations of memory-loader/discovery.
-- `/f67-sync` → memory-evolver (+ scoped discovery for thin areas).
-- `/f67-docs` → memory-loader + discovery; orchestrator writes docs (authoring style is a session-level concern).
+- `/f67:init` → parallel discovery (×N, scoped) + memory-evolver, with user confirmation of domain boundaries.
+- `/f67:prompt` → in-session classification → [memory-loader ∥ discovery] → (context-builder for large) → prompt-builder.
+- `/f67:plan` → planner → task-decomposer.
+- `/f67:execute` → executor (fast path, one dispatch, self-scoped).
+- `/f67:implement` → implementer (one task; parallel implementers for independent tasks).
+- `/f67:test` → tester. `/f67:review` → reviewer. `/f67:improve` → improver.
+- `/f67:discover`, `/f67:explain`, `/f67:brainstorm`, `/f67:memory` → in-session classification + read-only combinations of memory-loader/discovery.
+- `/f67:sync` → memory-evolver (+ scoped discovery for thin areas).
+- `/f67:docs` → memory-loader + discovery; orchestrator writes docs (authoring style is a session-level concern).
 
 ## Why artifacts, not conversation
 
@@ -43,7 +43,7 @@ Every stage persists its output as a markdown artifact and consumes its predeces
 
 ## Why graphs
 
-The memory index plus coarse graphs (`domain-graph`, `dependency-graph`) and per-domain layer-split file maps let agents find context by traversal instead of repo-wide scanning: index → domain → related files → dependencies → tests in a few reads. Discovery falls back to targeted grep only for gaps, and full-repo scans are treated as a failure mode. `/f67-sync` keeps graphs honest; the discovery agent reports drift whenever the graph and the working tree disagree.
+The memory index plus coarse graphs (`domain-graph`, `dependency-graph`) and per-domain layer-split file maps let agents find context by traversal instead of repo-wide scanning: index → domain → related files → dependencies → tests in a few reads. Discovery falls back to targeted grep only for gaps, and full-repo scans are treated as a failure mode. `/f67:sync` keeps graphs honest; the discovery agent reports drift whenever the graph and the working tree disagree.
 
 ## Extension points
 

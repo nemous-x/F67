@@ -3,7 +3,7 @@ name: f67-tester
 description: >
   F67 pipeline stage 9. Generates and runs tests for completed tasks — unit, integration,
   E2E, performance — suggests edge cases, and validates against regressions. Use for
-  /f67-test or after implementation within a workflow.
+  /f67:test or after implementation within a workflow.
 
   <example>
   Context: Task T2 is done and execution-report.md was updated.

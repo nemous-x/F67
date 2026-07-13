@@ -4,7 +4,7 @@ description: >
   F67 pipeline stage 3. Locates the concrete code relevant to a request — controllers,
   services, repositories, components, hooks, DTOs, schemas, events, tests — by traversing
   F67 graphs first and reading only what is needed. Use after f67-memory-loader, or
-  directly for /f67-discover.
+  directly for /f67:discover.
 
   <example>
   Context: Memory digest lists related files for billing but flags gaps around webhook handling.

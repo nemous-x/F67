@@ -21,7 +21,7 @@ When a category has no matching skill, agents must not fall back on generic best
 
 ## Rule 3 — Request missing skills
 
-Every unmatched category also becomes a skill request surfaced to the user — during `/f67-init` (from the detected stack) and in the prompt-spec's skills section during workflows. Each request names the category, the project evidence showing it is needed, and the two remedies:
+Every unmatched category also becomes a skill request surfaced to the user — during `/f67:init` (from the detected stack) and in the prompt-spec's skills section during workflows. Each request names the category, the project evidence showing it is needed, and the two remedies:
 
 - install a matching skill or plugin from a marketplace, or
 - let F67 generate a project skill into `.claude/f67/skills/`.
@@ -35,4 +35,4 @@ When F67 generates a project skill:
 - Every rule in it must trace to evidence in this repository (a config, a recurring pattern, a memory entry, a decision). No rule may come from generic training priors.
 - Write it in the project's ubiquitous language (glossary, domain memory).
 - Mark it `<!-- f67:generated -->` on line 1 and tell the user to review it; the user's edits make it curated.
-- Regenerate only on request or when `/f67-sync` finds the evidence has changed; never silently overwrite user edits.
+- Regenerate only on request or when `/f67:sync` finds the evidence has changed; never silently overwrite user edits.

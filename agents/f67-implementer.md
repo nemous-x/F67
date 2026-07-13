@@ -2,7 +2,7 @@
 name: f67-implementer
 description: >
   F67 pipeline stage 8. Implements exactly one task from the current plan — never more —
-  following the spec, context, and the skills injected for the task. Use for /f67-implement.
+  following the spec, context, and the skills injected for the task. Use for /f67:implement.
 
   <example>
   Context: current-plan.json says nextTask is T2.

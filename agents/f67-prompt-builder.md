@@ -4,7 +4,7 @@ description: >
   F67 pipeline stage 5. Transforms the raw user request plus execution context into a
   structured execution specification (prompt-spec.md) — objectives, requirements,
   constraints, acceptance criteria, testing strategy. Never generates code. Use for
-  /f67-prompt after context building.
+  /f67:prompt after context building.
 
   <example>
   Context: context.md is ready for "Implement partial refunds".

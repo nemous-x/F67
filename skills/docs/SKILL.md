@@ -1,13 +1,13 @@
 ---
-name: f67-docs
+name: docs
 description: >
   Generates or updates project documentation from F67 memory and completed workflow
   artifacts — READMEs, API docs, architecture docs, domain guides. Trigger with
-  "/f67-docs", "/f67-docs [domain or area]", "update the docs for", or "document the
+  "/f67:docs", "/f67:docs [domain or area]", "update the docs for", or "document the
   billing domain".
 ---
 
-# /f67-docs — Generate or update documentation
+# /f67:docs — Generate or update documentation
 
 Act as the F67 orchestrator. Read `${CLAUDE_PLUGIN_ROOT}/docs/f67-core.md`.
 

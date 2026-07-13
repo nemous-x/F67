@@ -3,7 +3,7 @@ name: f67-reviewer
 description: >
   F67 pipeline stage 10. Reviews completed work for architecture fit, maintainability,
   security, performance, readability, naming, reuse, accessibility, pattern adherence,
-  dead code, and consistency. Use for /f67-review.
+  dead code, and consistency. Use for /f67:review.
 
   <example>
   Context: All tasks in the current plan are done and tested.

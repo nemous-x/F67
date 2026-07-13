@@ -27,4 +27,4 @@ State files are pointers and status only. Task content lives in the plan documen
 { "lastSyncCommit": "", "workflows": [{ "artifact": "", "completedAt": "", "memorySynced": true }] }
 ```
 
-`progress.json` — transient checkpoint for resumable long operations (/f67-init batches); delete when done.
+`progress.json` — transient checkpoint for resumable long operations (/f67:init batches); delete when done.

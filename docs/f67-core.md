@@ -60,7 +60,7 @@ Every F67 command starts by reading this one small file. It replaces the domain-
 }
 ```
 
-Maintained by the memory-evolver on every delta and by `/f67-sync`. If `index.json` is missing, memory predates this format — regenerate it from the domain folders (cheap) before proceeding.
+Maintained by the memory-evolver on every delta and by `/f67:sync`. If `index.json` is missing, memory predates this format — regenerate it from the domain folders (cheap) before proceeding.
 
 ## Domain memory files — organized by layer
 
@@ -92,9 +92,9 @@ Rules:
 Memory must never lag the code. Four mechanisms keep it current:
 
 1. **After every completed task** (implement/improve/execute): the executing agent itself writes the delta before returning — dated line in each affected domain's `history.md`, path changes in `related-files.json`, new rules under `business-logic.md → ## Learned`, and the domain's `updatedAt` in `index.json`.
-2. **After every workflow** (the review/improve stage or wherever the workflow ends): the orchestrator dispatches the memory-evolver in *delta mode* — folds the artifact into feature records, graphs, decisions, and the index. This is not optional and not deferred to `/f67-sync`.
-3. **Staleness check at every command start**: after reading `index.json`, the orchestrator compares `lastSyncCommit` with `git rev-parse HEAD`. If the repo has moved significantly (work merged from other machines/teammates, or any domain's memory contradicts what discovery finds), it says so in one line and recommends `/f67-sync` — for `large` workflows it should run the sync delta before building context, because stale memory produces wrong specs.
-4. **On `/f67-sync`**: full reconciliation against git history.
+2. **After every workflow** (the review/improve stage or wherever the workflow ends): the orchestrator dispatches the memory-evolver in *delta mode* — folds the artifact into feature records, graphs, decisions, and the index. This is not optional and not deferred to `/f67:sync`.
+3. **Staleness check at every command start**: after reading `index.json`, the orchestrator compares `lastSyncCommit` with `git rev-parse HEAD`. If the repo has moved significantly (work merged from other machines/teammates, or any domain's memory contradicts what discovery finds), it says so in one line and recommends `/f67:sync` — for `large` workflows it should run the sync delta before building context, because stale memory produces wrong specs.
+4. **On `/f67:sync`**: full reconciliation against git history.
 
 An agent that finishes a task without writing its memory delta has not finished the task. A workflow that ends without the evolver delta is not finished either.
 
@@ -122,7 +122,7 @@ The **orchestrator itself** classifies each request by reading `memory/index.jso
 
 | Complexity | Route |
 |---|---|
-| `trivial` / `small` | **Fast path** — `/f67-execute`: one executor agent does scoped context + implement + test + memory delta in a single dispatch |
+| `trivial` / `small` | **Fast path** — `/f67:execute`: one executor agent does scoped context + implement + test + memory delta in a single dispatch |
 | `medium` | Compact pipeline — spec and plan phases run with merged stages (see command skills) |
 | `large` | Full pipeline — every stage, every artifact |
 
@@ -139,8 +139,8 @@ Hard rules:
 2. The orchestrator (main session) never implements, reviews, or reads large codebases. It dispatches agents and maintains state.
 3. Agents receive references (paths, node ids, artifact paths), not full file contents, wherever possible.
 4. Each stage reads the artifact of the previous stage, never conversation history.
-5. `/f67-implement` executes exactly one task per invocation.
-6. **Parallel dispatch**: the orchestrator runs independent agents concurrently — memory-loader and discovery together (discovery starts from graphs; the digest's gaps trigger at most one follow-up), per-domain discovery agents in parallel during `/f67-init`, and test generation for independent completed tasks in parallel.
+5. `/f67:implement` executes exactly one task per invocation.
+6. **Parallel dispatch**: the orchestrator runs independent agents concurrently — memory-loader and discovery together (discovery starts from graphs; the digest's gaps trigger at most one follow-up), per-domain discovery agents in parallel during `/f67:init`, and test generation for independent completed tasks in parallel.
 
 ## Output economy — purpose contracts, not line counts
 
@@ -155,14 +155,14 @@ And three working habits:
 
 - **Digest, don't dump** — an agent that pastes a file it read into its output has failed its consumer.
 - **Read scoped** — read the sections the index/graphs point to, not whole files or directories.
-- **User reports are headlines.** The user sees one line per outcome — what was done, result, next step — like a changelog entry, not a summary. No process narration, no restating artifacts, no closing recaps. Details exist in the artifacts; expand only when the user explicitly asks for details or an explanation. A command whose chat output is longer than five short lines has failed this rule (exceptions: /f67-explain and /f67-brainstorm, whose product IS the text, and blocking questions that need the user's answer).
+- **User reports are headlines.** The user sees one line per outcome — what was done, result, next step — like a changelog entry, not a summary. No process narration, no restating artifacts, no closing recaps. Details exist in the artifacts; expand only when the user explicitly asks for details or an explanation. A command whose chat output is longer than five short lines has failed this rule (exceptions: /f67:explain and /f67:brainstorm, whose product IS the text, and blocking questions that need the user's answer).
 
 ## Model policy — decided by the orchestrator at dispatch time
 
 No agent has a fixed model. The orchestrator chooses per dispatch based on stakes, not on agent identity:
 
 - **Default: the session's model.** Quality work — anything that writes memory, judges code, plans, implements, classifies, or builds specs — gets the most capable model available. Memory is the system's brain; polluting it to save tokens is the most expensive mistake F67 can make.
-- **Downgrade only provably mechanical dispatches**: pure file-map/graph bookkeeping in `/f67-sync`, regenerating `index.json` from existing folders, formatting a session summary. If the dispatch requires judgment about code or business meaning, it is not mechanical.
+- **Downgrade only provably mechanical dispatches**: pure file-map/graph bookkeeping in `/f67:sync`, regenerating `index.json` from existing folders, formatting a session summary. If the dispatch requires judgment about code or business meaning, it is not mechanical.
 - When in doubt, don't downgrade.
 
 ## Artifact contracts
@@ -195,7 +195,7 @@ Task *content* (descriptions, files, criteria, skills) lives only in `implementa
 
 ## Metrics — measure, don't guess
 
-At the end of every command, the orchestrator appends one line to `logs/metrics.jsonl`: `{ "ts": "", "command": "", "complexity": "", "dispatches": 0, "parallel": 0, "artifactBytes": 0, "outcome": "", "findingCategories": [] }` (`findingCategories` from review workflows). `/f67-memory audit` reports aggregates so optimization decisions are made on the team's real usage, not intuition.
+At the end of every command, the orchestrator appends one line to `logs/metrics.jsonl`: `{ "ts": "", "command": "", "complexity": "", "dispatches": 0, "parallel": 0, "artifactBytes": 0, "outcome": "", "findingCategories": [] }` (`findingCategories` from review workflows). `/f67:memory audit` reports aggregates so optimization decisions are made on the team's real usage, not intuition.
 
 ## Learning from critique — recurring findings become conventions
 
@@ -210,7 +210,7 @@ Memory files must stay permanently cheap to load. The evolver compacts as it goe
 ```yaml
 version: 1
 project:
-  stack: []            # detected by /f67-init from the repository
+  stack: []            # detected by /f67:init from the repository
   architecture: ""     # detected architecture style
   testFramework: ""    # detected test framework
   uiFramework: ""      # detected UI framework / styling approach
@@ -219,7 +219,7 @@ memory:
   protectCurated: true
 skills:
   map: {}              # technicalArea -> resolved skill (project path or installed skill name),
-                       # built by /f67-init, re-resolved by /f67-sync — per-request injection is a lookup
+                       # built by /f67:init, re-resolved by /f67:sync — per-request injection is a lookup
   requested: []        # skills F67 recommended but the user hasn't added yet
 ```
 
@@ -231,7 +231,7 @@ F67 ships no stack-specific knowledge. It ships *rules* for discovering, injecti
 
 Only the orchestrator (main session) can see the user's installed skills and plugins — subagents cannot. So resolution happens once, in the orchestrator, and is cached:
 
-1. **At `/f67-init`** (and re-resolved at `/f67-sync`): the orchestrator matches each technical area the project needs against project skills (`.claude/f67/skills/*.md`) first, then installed Claude Code skills/plugins, and writes the result to `config.yaml → skills.map`.
+1. **At `/f67:init`** (and re-resolved at `/f67:sync`): the orchestrator matches each technical area the project needs against project skills (`.claude/f67/skills/*.md`) first, then installed Claude Code skills/plugins, and writes the result to `config.yaml → skills.map`.
 2. **Per request**: injection is a dictionary lookup — the orchestrator reads `skills.map` for the request's technical areas and passes the resolved names/paths to agents in the dispatch. No searching, no re-matching.
 3. **Unmapped areas**: F67 must not silently proceed on priors. The gap is recorded in `skills.requested`, surfaced to the user (install from a marketplace, or let F67 generate an evidence-based project skill), and agents derive rules from project evidence per `skill-injection-rules.md` meanwhile.
 
@@ -254,9 +254,9 @@ When `skills.map` has no entry for a needed area, the rules are derived from the
 
 ### Business-specific skills
 
-F67 should actively suggest that users create project skills for their recurring business domains (e.g. a `billing` skill encoding invoice rounding rules, a `claims-processing` skill). Trigger this suggestion when: `/f67-init` completes, a domain accumulates 3+ features, or the memory evolver records repeated corrections in one domain. Project skills live in `.claude/f67/skills/<name>.md` and are auto-mapped by domain name.
+F67 should actively suggest that users create project skills for their recurring business domains (e.g. a `billing` skill encoding invoice rounding rules, a `claims-processing` skill). Trigger this suggestion when: `/f67:init` completes, a domain accumulates 3+ features, or the memory evolver records repeated corrections in one domain. Project skills live in `.claude/f67/skills/<name>.md` and are auto-mapped by domain name.
 
 ### Methodology recommendations
 
 - **TDD for business logic**: when a request's primary work is domain/business rules (requestType `feature` touching business-rules), the planner defaults to the `tdd` strategy and says so explicitly. Deviating requires a stated reason.
-- **DDD or feature-sliced for greenfield**: when the project is new, or the request builds a capability with no existing implementation (no related features, thin domain memory), recommend structuring it with DDD (backend/domain-heavy) or feature-sliced architecture (frontend-heavy) before planning. `/f67-init` on a young repo and `/f67-brainstorm` must surface this recommendation; the planner records the choice as a decision record.
+- **DDD or feature-sliced for greenfield**: when the project is new, or the request builds a capability with no existing implementation (no related features, thin domain memory), recommend structuring it with DDD (backend/domain-heavy) or feature-sliced architecture (frontend-heavy) before planning. `/f67:init` on a young repo and `/f67:brainstorm` must surface this recommendation; the planner records the choice as a decision record.

@@ -1,12 +1,12 @@
 ---
-name: f67-sync
+name: sync
 description: >
   Synchronizes F67 Domain Driven Memory with repository changes — updates graphs, file
   associations, and relationships, and folds completed workflow artifacts into memory.
-  Trigger with "/f67-sync", "sync f67 memory", or "update f67 after these changes".
+  Trigger with "/f67:sync", "sync f67 memory", or "update f67 after these changes".
 ---
 
-# /f67-sync — Synchronize memory with reality
+# /f67:sync — Synchronize memory with reality
 
 Act as the F67 orchestrator. Read `${CLAUDE_PLUGIN_ROOT}/docs/f67-core.md`.
 

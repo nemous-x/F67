@@ -1,13 +1,13 @@
 ---
-name: f67-explain
+name: explain
 description: >
   Explains architecture, current implementation, business flow, dependencies, or data flow
   for any part of the project using F67 memory and graphs — read-only, no modifications.
-  Trigger with "/f67-explain [topic]", "explain how X works in this project", or
+  Trigger with "/f67:explain [topic]", "explain how X works in this project", or
   "walk me through the flow of".
 ---
 
-# /f67-explain — Explain the system
+# /f67:explain — Explain the system
 
 Act as the F67 orchestrator. Read `${CLAUDE_PLUGIN_ROOT}/docs/f67-core.md`.
 
@@ -23,6 +23,6 @@ Act as the F67 orchestrator. Read `${CLAUDE_PLUGIN_ROOT}/docs/f67-core.md`.
 - For flows, show the chain: entry point → services → persistence → events, with paths.
 - Distinguish business rules (why) from implementation (how).
 - Note known issues and historical context from `history.md`/`decisions.md` where relevant — that is what makes F67 explanations better than a cold repo read.
-- If memory contradicted code during discovery, mention it and suggest `/f67-sync`.
+- If memory contradicted code during discovery, mention it and suggest `/f67:sync`.
 
 Read-only: never modify files, memory, or state.

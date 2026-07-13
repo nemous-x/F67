@@ -3,7 +3,7 @@ name: f67-improver
 description: >
   F67 pipeline stage 11. Converts review findings into a prioritized improvement plan —
   refactorings, simplifications, abstractions, performance fixes, documentation, cleanup —
-  and optionally applies approved improvements. Use for /f67-improve.
+  and optionally applies approved improvements. Use for /f67:improve.
 
   <example>
   Context: review-report.md contains two major findings and several nits.

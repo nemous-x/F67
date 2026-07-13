@@ -1,14 +1,14 @@
 ---
-name: f67-init
+name: init
 description: >
   Initializes F67 for an existing repository — analyzes the codebase, detects stack,
   architecture, conventions, testing and UI frameworks, identifies business domains,
   and generates the initial Domain Driven Memory and relationship graphs under
-  .claude/f67/. Trigger with "/f67-init", "initialize f67", "onboard this repo to f67",
+  .claude/f67/. Trigger with "/f67:init", "initialize f67", "onboard this repo to f67",
   or "set up f67 memory".
 ---
 
-# /f67-init — Initialize F67 for an existing project
+# /f67:init — Initialize F67 for an existing project
 
 Act as the F67 orchestrator. Read `${CLAUDE_PLUGIN_ROOT}/docs/f67-core.md` first — it defines the runtime layout being created. Initialization is repeatable and incremental: if `.claude/f67/` already exists, update rather than recreate, and never touch curated content.
 
@@ -59,4 +59,4 @@ After validation, always close with tailored recommendations:
 3. **Architecture for young projects**: if the repository is new or largely empty, recommend adopting DDD (domain/backend-heavy products) or feature-sliced architecture (frontend-heavy products) before feature work begins, explain the tradeoff in two sentences each, and record the user's choice as the first decision record.
 4. **TDD for business logic**: note that F67's planner defaults to TDD for business-logic features and where that expectation comes from.
 
-Recommend `/f67-sync` cadence and `/f67-prompt` as the next step.
+Recommend `/f67:sync` cadence and `/f67:prompt` as the next step.
